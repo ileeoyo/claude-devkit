@@ -1,0 +1,14 @@
+{
+  "name": "claude-devkit",
+  "owner": {
+    "name": "ileeoyo"
+  },
+  "plugins": [
+    {
+      "name": "claude-devkit",
+      "source": "./",
+      "description": "个人开发效率工具集：API 文档生成、Git 改动分析、代码重构、提示词优化",
+      "version": "1.1.0"
+    }
+  ]
+}
