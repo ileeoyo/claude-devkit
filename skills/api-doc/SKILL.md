@@ -9,6 +9,22 @@ description: 根据 Java Controller 接口生成前端 API 对接文档。当用
 
 ---
 
+## 文件路径说明
+
+**当前 Skill 目录**：`${CLAUDE_SKILL_DIR}`
+
+**目录结构**：
+```
+${CLAUDE_SKILL_DIR}/
+├── SKILL.md (本文件)
+└── references/
+    ├── WORKFLOW.md
+    ├── RULES.md
+    └── TEMPLATE.md
+```
+
+---
+
 ## ⚠️ 核心原则（强制遵守）
 
 **代码绝对优先原则：**
@@ -35,7 +51,7 @@ description: 根据 Java Controller 接口生成前端 API 对接文档。当用
 □ 已读取 references/RULES.md（必须！包含必填性判断、业务规则提取规则）
 ```
 
-**注意：** TEMPLATE.md在步骤10生成文档时才读取
+**注意：** references/TEMPLATE.md在步骤10生成文档时才读取
 
 ---
 
@@ -65,7 +81,7 @@ description: 根据 Java Controller 接口生成前端 API 对接文档。当用
 | 定位 | 1-3 | 解析参数 → 定位 Controller → 确认接口清单（防遗漏） |
 | 分析 | 4-8 | 分析接口定义 → 确定请求信息 → 追溯类型 → **深入 Service 层** → 提取字段 |
 | 汇总 | 9 | 汇总对象与枚举归属，决定内联还是抽取为公共定义 |
-| 生成 | 10 | **此时读取 TEMPLATE.md**，按模板生成文档并保存 |
+| 生成 | 10 | **此时读取 references/TEMPLATE.md**，按模板生成文档并保存 |
 | 验证 | 11 | 对照检查清单验证文档完整性和准确性 |
 
 **⚠️ 分析阶段（步骤4-8）严格遵循代码优先原则，参考 references/RULES.md**

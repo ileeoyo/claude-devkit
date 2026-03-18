@@ -176,7 +176,7 @@ if (req.getConfirm() && StringUtils.isBlank(req.getBankCardNo())) {
 
 ## 步骤 10：生成文档
 
-按 [TEMPLATE.md](TEMPLATE.md) 模板生成。
+按 references/TEMPLATE.md 模板生成。
 
 ---
 
