@@ -1,6 +1,6 @@
 {
   "name": "claude-devkit",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "个人开发效率工具集：API 文档生成、Git 改动分析、代码重构、提示词优化",
   "author": {
     "name": "ileeoyo"
