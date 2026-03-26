@@ -62,5 +62,3 @@ tags: [git, commit, version-control]
 | test | 测试相关 | `test: 新增用户服务单元测试` |
 | chore | 构建/工具 | `chore: 升级依赖版本` |
 
-**Reference**
-- 运行 `git log --oneline -10` 查看最近的提交风格
