@@ -11,15 +11,23 @@ tags: [git, commit, version-control]
 - 禁止添加 `Co-Authored-By` 或 `Generated with Claude Code` 后缀
 - 不要自动 push 到远程仓库，除非用户明确要求
 - 不要使用 `git add -A` 或 `git add .`，应明确指定要提交的文件
-- 如果有敏感文件（.env、credentials 等），警告用户不要提交
+
+**敏感文件检测与处理**
+- 提交前检查是否包含敏感文件（.env、credentials、*.pem、*.key、password、secret 等）
+- 如果检测到敏感文件，立即警告用户并列出敏感文件清单
+- 用户必须选择以下操作之一：
+  1. **取消提交**：终止本次提交操作
+  2. **忽略敏感文件**：从提交中排除敏感文件，仅提交非敏感文件
+  3. **确认提交**：用户二次确认，知悉风险并执意提交（需用户明确输入"确认"）
 
 **Steps**
 1. 运行 `git status` 查看当前工作区状态
 2. 运行 `git diff` 和 `git diff --staged` 查看具体改动内容
-3. 分析改动，确定：
+3. 检查是否存在敏感文件，如有则按上述敏感文件处理流程执行
+4. 分析改动，确定：
    - **类型**：feat（新功能）、fix（修复）、refactor（重构）、docs（文档）、style（格式）、test（测试）、chore（杂项）
    - **描述**：简洁描述改动内容（中文）
-4. 生成 commit message，格式如下：
+5. 生成 commit message，格式如下：
 
    ```
    类型: 总结性描述
@@ -35,9 +43,12 @@ tags: [git, commit, version-control]
    - 分项描述主要的改动点，最多不超过 **5 个**，避免大改动时分项过多
    - 每个分项应简洁明了，说明"做了什么"而非"怎么做的"
    - 分项之间避免重复，聚焦不同方面的改动
-5. 生成 commit message 并询问用户确认
-6. 执行 `git add <files>` 添加指定文件
-7. 执行 `git commit -m "message"` 提交
+6. 将 commit message 展示给用户，询问确认：
+   - 询问用户是否按此 message 提交
+   - 如果用户拒绝或提出修改意见，修改后再次展示给用户确认
+   - **循环此步骤直到用户明确确认**，或用户选择取消提交
+7. 用户确认后，执行 `git add <files>` 添加指定文件
+8. 执行 `git commit -m "message"` 提交
 
 **Commit 类型说明**
 
