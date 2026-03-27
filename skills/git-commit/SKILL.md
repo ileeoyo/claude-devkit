@@ -7,7 +7,7 @@ tags: [git, commit, version-control]
 
 **Guardrails**
 - 如果项目有指定的 commit 规范，遵循项目规范；否则使用通用格式
-- commit message 格式：`类型: 描述`
+- commit message 格式：`类型: 描述`，**禁止添加 scope、模块标识等任何额外成分**（如 `fix(api-doc)`、`feat(module):` 都是错误的）
 - 禁止添加 `Co-Authored-By` 或 `Generated with Claude Code` 后缀
 - 不要自动 push 到远程仓库，除非用户明确要求
 - 不要使用 `git add -A` 或 `git add .`，应明确指定要提交的文件
