@@ -5,14 +5,18 @@ category: Git
 tags: [git, commit, version-control]
 ---
 
-**Guardrails**
+# Git Commit 助手
+
+分析当前Git项目的代码改动，生成规范的 commit message，经用户确认后执行提交。
+
+## Guardrails
 - 如果项目有指定的 commit 规范，遵循项目规范；否则使用通用格式
 - commit message 格式：`类型: 描述`，**禁止添加 scope、模块标识等任何额外成分**（如 `fix(api-doc)`、`feat(module):` 都是错误的）
 - 禁止添加 `Co-Authored-By` 或 `Generated with Claude Code` 后缀
 - 不要自动 push 到远程仓库，除非用户明确要求
 - 不要使用 `git add -A` 或 `git add .`，应明确指定要提交的文件
 
-**敏感文件检测与处理**
+## 敏感文件检测与处理
 - 提交前检查是否包含敏感文件（.env、credentials、*.pem、*.key、password、secret 等）
 - 如果检测到敏感文件，立即警告用户并列出敏感文件清单
 - 用户必须选择以下操作之一：
@@ -20,7 +24,7 @@ tags: [git, commit, version-control]
   2. **忽略敏感文件**：从提交中排除敏感文件，仅提交非敏感文件
   3. **确认提交**：用户二次确认，知悉风险并执意提交（需用户明确输入"确认"）
 
-**Steps**
+## Steps
 1. 运行 `git status && git diff HEAD` 一次性查看工作区状态和所有改动内容（包含已暂存和未暂存的差异）。如有未跟踪的新文件需要提交，再单独读取其内容
 2. 检查是否存在敏感文件，如有则按上述敏感文件处理流程执行
 3. 分析改动，确定：
@@ -49,7 +53,7 @@ tags: [git, commit, version-control]
    - **循环此步骤直到用户明确确认**，或用户选择取消提交
 6. 用户确认后，执行 `git add <files> && git commit -m "message"` 一次性完成暂存和提交
 
-**Commit 类型说明**
+## Commit 类型说明
 
 | 类型 | 说明 | 示例 |
 |-----|------|------|
