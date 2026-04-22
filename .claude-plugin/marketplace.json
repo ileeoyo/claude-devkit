@@ -8,7 +8,7 @@
       "name": "claude-devkit",
       "source": "./",
       "description": "个人开发效率工具集：API 文档生成、Git 改动分析、代码重构、提示词优化",
-      "version": "1.4.5"
+      "version": "1.4.6"
     }
   ]
 }
