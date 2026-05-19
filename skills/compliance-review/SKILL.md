@@ -10,22 +10,20 @@ description: >-
 
 ## 流程
 
-主 Agent 先确认本次审查使用的规范文件路径，再使用 `Agent` 工具开启一个 `general-purpose` subagent 审查。
+主 Agent 直接使用 `Agent` 工具开启一个 `general-purpose` subagent 审查，**不自行查询 git diff 或文件内容**，所有审查工作由 subagent 完成。
 
-规范文件路径由主 Agent 明确传给 subagent，不能要求 subagent 自行猜测或自行扩展。通常包括已存在且可读取的项目级 `.claude/CLAUDE.md`、仓库级 `CLAUDE.md`、用户级 `~/.claude/CLAUDE.md`，以及当前会话上下文明确给出的其他 CLAUDE 规则文件。
+规范文件路径由主 Agent 明确传给 subagent，通常包括项目级 `.claude/CLAUDE.md`、仓库级 `CLAUDE.md`、用户级 `~/.claude/CLAUDE.md`，以及当前会话上下文明确给出的其他 CLAUDE 规则文件。subagent 不得自行猜测或扩展规范文件路径。
 
-传给 subagent 的 prompt 保持简略，只包含：审查目标、审查范围、规范文件路径列表、必须执行的审查步骤、输出格式要求。
+传给 subagent 的 prompt 包含：审查目标、审查范围、规范文件路径列表、必须执行的审查步骤、输出格式要求。
 
-subagent 必须按顺序完成以下工作：
+subagent 必须按顺序完成：
 
-- 先读取文件改动：`git status --short && git diff --stat && git diff --cached --stat` 和 `git diff && git diff --cached`，并读取本次任务相关的 untracked 文件内容
-- 再读取主 Agent 指定的每一个规范文件
-- 将规范文件中的规则逐条展开审查，对每条适用规则都判断符合、不符合、不适用或无法判断
-- 审查过程必须完整对比，不能只审查主要、重要或简略规范；最终报告只输出问题和结论，不逐条列出全部规范
+- 读取改动：`git status --short && git diff --stat && git diff --cached --stat` 和 `git diff && git diff --cached`，并读取相关 untracked 文件
+- 读取主 Agent 指定的每一个规范文件
+- 逐条展开审查，对每条适用规则判断符合、不符合、不适用或无法判断；只输出问题和结论，不逐条列出全部规范
+- 审查业务逻辑时需读取实际实现代码，不能仅凭函数名或注释判断
 
 审查范围：unstaged changes + staged changes + 本次任务相关的 untracked 文件。
-
-审查业务逻辑时需读取实际实现代码，不能仅凭函数名或注释判断。
 
 ### 执行修复
 
