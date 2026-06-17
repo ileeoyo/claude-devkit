@@ -1,6 +1,7 @@
 ---
 name: git-changes
 description: 读取未提交代码、git diff、暂存区变更，分析改动内容
+disable-model-invocation: true
 ---
 
 # Git改动读取助手

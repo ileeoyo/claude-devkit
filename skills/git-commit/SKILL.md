@@ -1,6 +1,7 @@
 ---
 name: git-commit
 description: 分析代码改动并生成规范的 commit message
+disable-model-invocation: true
 category: Git
 tags: [git, commit, version-control]
 ---

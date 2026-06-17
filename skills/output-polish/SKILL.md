@@ -2,6 +2,7 @@
 name: output-polish
 description: >-
   当用户觉得上一条或某段模型输出啰嗦、结构混乱、主次不清、不适合阅读，要求“整理一下上面的输出”“换个模型整理”“让内容更友好”“用 Haiku/GLM-5.1 重新整理”等场景时使用。主 Agent 必须把传入内容原封不动交给 claude 非交互命令，只允许命令对传入信息做信息保真的结构整理；不读取任何其他信息、代码或网络内容，不修改任何文件；不指定模型时默认使用 haiku，也可以通过参数指定特殊模型。
+disable-model-invocation: true
 category: Writing
 tags: [output, polish, claude-cli, haiku]
 ---

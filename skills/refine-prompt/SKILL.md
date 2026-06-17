@@ -1,6 +1,7 @@
 ---
 name: refine-prompt
 description: 将口语化、模糊或描述不清的提示词，整理优化为结构化、表达清晰的提示词，供用户确认意图后再开始执行任务。
+disable-model-invocation: true
 ---
 
 # 提示词优化助手

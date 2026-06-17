@@ -1,6 +1,7 @@
 ---
 name: refactor
 description: 分析代码坏味道，执行重构优化
+disable-model-invocation: true
 ---
 
 # 代码重构助手

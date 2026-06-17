@@ -1,6 +1,7 @@
 ---
 name: api-doc
 description: 根据 Java Controller 接口生成前端 API 对接文档。当用户要求生成 API 文档、接口文档，或提到前端对接、接口说明时使用。支持基于 git 改动、接口路径、文件路径等多种方式定位接口。
+disable-model-invocation: true
 ---
 
 # 前端 API 对接文档生成器
