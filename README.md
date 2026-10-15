@@ -75,6 +75,17 @@
 /output-polish 把这段通知改得简洁自然：<粘贴内容>   # 重写用户提供的文字
 ```
 
+### `/export-last-output` - 上一条输出导出
+
+把当前会话中最后一条 AI 文本输出抽出来，落成 Markdown 文件并用系统默认 Markdown 程序打开，便于用 Typora 一类工具阅读和批注。通过会话 ID 定位当前窗口的会话记录，同一项目开多个窗口时不会串到其他会话。
+
+**使用方式：**
+
+```bash
+/export-last-output                     # 导出上一条 AI 输出并打开
+/export-last-output 存到桌面上          # 指定导出位置
+```
+
 ## 许可证
 
 MIT
